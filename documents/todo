@@ -1,0 +1,7 @@
+- hide secret key
+- create .venv and venv.sample
+- create .gitignore
+- set postgresql
+- create a utils app
+- [DONE] add api documentation
+- [DONE] modulation settings

@@ -1,0 +1,34 @@
+Stages of the project:
+
+1. [DONE] Basics
+- plan for the project
+- set up an IDE
+- Venv
+- Git
+
+2. [PENDING] Developing an MVP
+- services and selectors
+- modular project configs
+- JWT
+- basics of DB
+- APIs and docs
+- routing plan
+
+3. Developing Services
+
+4. Testing
+- writing test cases
+- using libraries
+
+5. DevOps phase
+- dockerize the project
+- add CI/CD using GitLab
+- monitoring tools
+- reverse proxy
+- web server, load balancer
+
+6. Deployment
+- DNS using Cloudflare
+- setting up a VM
+- server hardening
+- domain

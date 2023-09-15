@@ -1,9 +1,9 @@
 - hide secret key
 - create .venv and venv.sample
 - create .gitignore
-- set postgresql
-- create a utils app
-- set up git branches
+- [DONE] set postgresql
+- [DONE] create a utils app
+- [DONE] set up git branches
 - [DONE] delete extra git branches
 - [DONE] add api documentation
 - [DONE] modulation settings

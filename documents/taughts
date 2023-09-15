@@ -1,0 +1,8 @@
+- The reason we code our serializers inside our APIs is the serializer is meant to do only one job,
+converting data structures. It's not going to write anything in our database (which is considered our
+business logic). Due to this, We place our serializer in the heart of its own API so we could implement
+our onion architecture in a more professional way and once we want to modify an API, its serializer is also
+right in front of us and we don't have to look for it in other places.
+
+- Selectors are used to select and display something (read) from the database and services are used to add data
+(write) to the database.

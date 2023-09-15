@@ -11,6 +11,7 @@ ALLOWED_HOSTS = []
 LOCAL_APPS = [
     'apps.blog',
     'apps.utils',
+    'apps.api'
 ]
 
 THIRD_PARTY_APPS = [
@@ -80,8 +81,12 @@ SPECTACULAR_SETTINGS = {
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'socializepy',
+        'USER': 'amir',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 

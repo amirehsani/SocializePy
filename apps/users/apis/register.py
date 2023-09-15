@@ -1,3 +1,5 @@
+from django.core.validators import MinLengthValidator
+
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -5,6 +7,8 @@ from rest_framework import serializers
 from drf_spectacular.utils import extend_schema
 
 from apps.users.models import BaseUser
+from apps.users.services.user import create_user
+from apps.utils.validators import number_validator, special_char_validator, letter_validator
 
 
 class RegisterAPI(APIView):
@@ -12,8 +16,25 @@ class RegisterAPI(APIView):
     class InputRegisterSerializer(serializers.Serializer):
 
         email = serializers.CharField(max_length=255)
-        password = serializers.CharField(max_length=31)
+        password = serializers.CharField(validators=[
+                                         number_validator,
+                                         special_char_validator,
+                                         letter_validator,
+                                         MinLengthValidator(limit_value=8),
+                                         ])
         confirm_password = serializers.CharField(max_length=31)
+
+        @staticmethod
+        def validate_email(email):
+            if BaseUser.objects.filter(email=email).exists():
+                raise serializers.ValidationError("Email already exists!")
+
+        def validate(self, data):
+            if not data.get("password") or not data.get("confirm_password"):
+                raise serializers.ValidationError("Please provide us with a password and confirmation")
+
+            if data.get("password") != data.get("confirm_password"):
+                raise serializers.ValidationError("Please confirm your password again.")
 
     class OutPutRegisterSerializer(serializers.ModelSerializer):
         class Meta:

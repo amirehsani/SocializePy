@@ -1,4 +1,6 @@
+from datetime import timedelta
 from pathlib import Path
+
 
 # Security
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,6 +15,7 @@ LOCAL_APPS = [
     'apps.utils',
     'apps.api',
     'apps.users',
+    'apps.auth',
 ]
 
 THIRD_PARTY_APPS = [
@@ -63,6 +66,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 AUTH_USER_MODEL = 'users.BaseUser'
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
 
 
 # Third-party:

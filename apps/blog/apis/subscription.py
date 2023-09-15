@@ -12,7 +12,7 @@ from apps.blog.services.post import unsubscribe, subscribe
 from apps.api.mixins import APIAuthMixin
 
 
-class SubscribeDetailApi(ApiAuthMixin, APIView):
+class SubscribeDetailApi(APIAuthMixin, APIView):
 
     def delete(self, request, email):
 
@@ -27,8 +27,7 @@ class SubscribeDetailApi(ApiAuthMixin, APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class SubscribeApi(ApiAuthMixin, APIView):
-
+class SubscribeApi(APIAuthMixin, APIView):
     class Pagination(LimitOffsetPagination):
         default_limit = 10
 
@@ -52,12 +51,12 @@ class SubscribeApi(ApiAuthMixin, APIView):
         user = request.user
         query = get_subscribers(user=user)
         return get_paginated_response(
-                request=request,
-                pagination_class=self.Pagination,
-                queryset=query,
-                serializer_class=self.OutPutSubSerializer,
-                view=self,
-                )
+            request=request,
+            pagination_class=self.Pagination,
+            queryset=query,
+            serializer_class=self.OutPutSubSerializer,
+            view=self,
+        )
 
     @extend_schema(
         request=InputSubSerializer,

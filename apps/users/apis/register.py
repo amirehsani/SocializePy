@@ -5,10 +5,14 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import serializers
 from drf_spectacular.utils import extend_schema
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from apps.users.models import BaseUser
 from apps.users.services.user import create_user
 from apps.utils.validators import number_validator, special_char_validator, letter_validator
+
+
+token = serializers.SerializerMethodField("get_token")
 
 
 class RegisterAPI(APIView):
@@ -39,7 +43,7 @@ class RegisterAPI(APIView):
     class OutPutRegisterSerializer(serializers.ModelSerializer):
         class Meta:
             model = BaseUser
-            fields = "email"
+            fields = ("email", "token", "created_at", "updated_at")
 
     @extend_schema(request=InputRegisterSerializer, responses=OutPutRegisterSerializer)
     def post(self, request):
@@ -59,3 +63,15 @@ class RegisterAPI(APIView):
                     )
 
         return Response(self.OutPutRegisterSerializer(query, context={"request": request}).data)
+
+    @staticmethod
+    def get_token(user):
+        data = dict()
+        token_class = RefreshToken
+
+        refresh = token_class.for_user(user)
+
+        data["refresh"] = str(refresh)
+        data["access"] = str(refresh.access_token)
+
+        return data

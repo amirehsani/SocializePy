@@ -12,7 +12,6 @@ from drf_spectacular.utils import extend_schema
 
 
 class ProductApi(APIView):
-
     class Pagination(LimitOffsetPagination):
         default_limit = 15
 
@@ -32,12 +31,12 @@ class ProductApi(APIView):
             query = create_product(name=serializer.validated_data.get("name"))
         except Exception as ex:
             return Response(
-                    f"Database Error {ex}",
-                    status=status.HTTP_400_BAD_REQUEST
-                    )
-        return Response(self.OutPutSerializer(query, context={"request":request}).data)
+                f"Database Error {ex}",
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        return Response(self.OutPutSerializer(query, context={"request": request}).data)
 
     @extend_schema(responses=OutPutSerializer)
     def get(self, request):
         query = get_products()
-        return Response(self.OutPutSerializer(query, context={"request":request}, many=True).data)
+        return Response(self.OutPutSerializer(query, context={"request": request}, many=True).data)

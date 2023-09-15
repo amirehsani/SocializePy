@@ -1,0 +1,5 @@
+TO BE LEARNED:
+
+- Django's translation framework (lazy)
+- Django's inner default tables
+- clean vs full-clean in Django

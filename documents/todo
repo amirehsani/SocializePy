@@ -1,6 +1,7 @@
 - hide secret key
 - create .venv and venv.sample
 - create .gitignore
+- add username to users.models from BaseUser
 - [DONE] set postgresql
 - [DONE] create a utils app
 - [DONE] set up git branches

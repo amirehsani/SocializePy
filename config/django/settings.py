@@ -11,7 +11,8 @@ ALLOWED_HOSTS = []
 LOCAL_APPS = [
     'apps.blog',
     'apps.utils',
-    'apps.api'
+    'apps.api',
+    'apps.users',
 ]
 
 THIRD_PARTY_APPS = [

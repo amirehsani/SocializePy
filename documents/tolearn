@@ -4,3 +4,6 @@ TO BE LEARNED:
 - Django's inner default tables
 - clean vs full-clean in Django
 - django.utils.decorators.atomic_transaction
+- JWT video
+- Django filters
+- study the "social media" video code

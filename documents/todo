@@ -3,5 +3,7 @@
 - create .gitignore
 - set postgresql
 - create a utils app
+- set up git branches
+- [DONE] delete extra git branches
 - [DONE] add api documentation
 - [DONE] modulation settings

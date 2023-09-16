@@ -16,6 +16,8 @@ LOCAL_APPS = [
     'apps.api',
     'apps.users',
     'apps.authenticate',
+
+    'tests',
 ]
 
 THIRD_PARTY_APPS = [

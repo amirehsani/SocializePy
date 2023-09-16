@@ -7,3 +7,5 @@ TO BE LEARNED:
 - JWT video
 - Django filters
 - study the "social media" video code
+- what are fixtures in testing?
+- what is APIClient in DRF?

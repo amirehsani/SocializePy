@@ -2,7 +2,7 @@ import pytest
 from rest_framework.test import APIClient
 from rest_framework_simplejwt.tokens import RefreshToken
 from apps.users.models import BaseUser
-from apps.tests.factories import (
+from tests.factories import (
         BaseUserFactory,
         ProfileFactory,
         SubscriptionFactory,

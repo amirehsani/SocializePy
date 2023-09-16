@@ -13,12 +13,14 @@ class BaseUserFactory(factory.django.DjangoModelFactory):
     email    = factory.Iterator(['fr@gmail.com', 'it@gmail.com', 'es@gmail.com'])
     password = factory.PostGenerationMethodCall('set_password', 'adm1n')
 
+
 class SubscriptionFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Subscription
 
     target        = factory.SubFactory(BaseUserFactory)
     subscriber    = factory.SubFactory(BaseUserFactory)
+
 
 class PostFactory(factory.django.DjangoModelFactory):
     class Meta:
@@ -30,6 +32,7 @@ class PostFactory(factory.django.DjangoModelFactory):
     created_at           = factory.LazyAttribute(lambda _: f'{timezone.now()}')
     updated_at           = factory.LazyAttribute(lambda _: f'{timezone.now()}')
     author = factory.SubFactory(BaseUserFactory)
+
 
 class ProfileFactory(factory.django.DjangoModelFactory):
     class Meta:

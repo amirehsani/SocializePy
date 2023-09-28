@@ -16,6 +16,7 @@ LOCAL_APPS = [
     'apps.api',
     'apps.users',
     'apps.authenticate',
+    'apps.chat',
 
     'tests',
 ]

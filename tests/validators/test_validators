@@ -1,0 +1,42 @@
+import unittest
+import re
+
+
+class TestPasswordValidators(unittest.TestCase):
+
+    def test_number_validator_valid(self):
+
+        password = "Password123"
+        self.assertIsNone(number_validator(password))
+
+    def test_number_validator_invalid(self):
+
+        password = "Password"
+        with self.assertRaises(ValidationError):
+            number_validator(password)
+
+    def test_letter_validator_valid(self):
+
+        password = "123Password"
+        self.assertIsNone(letter_validator(password))
+
+    def test_letter_validator_invalid(self):
+
+        password = "123456"
+        with self.assertRaises(ValidationError):
+            letter_validator(password)
+
+    def test_special_char_validator_valid(self):
+
+        password = "P@ssw0rd"
+        self.assertIsNone(special_char_validator(password))
+
+    def test_special_char_validator_invalid(self):
+
+        password = "Password123"
+        with self.assertRaises(ValidationError):
+            special_char_validator(password)
+
+
+if __name__ == '__main__':
+    unittest.main()

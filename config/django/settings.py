@@ -16,6 +16,9 @@ LOCAL_APPS = [
     'apps.api',
     'apps.users',
     'apps.authenticate',
+    'apps.chat',
+
+    'tests',
 ]
 
 THIRD_PARTY_APPS = [
